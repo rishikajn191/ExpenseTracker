@@ -1,0 +1,211 @@
+body {
+  font-family: Fantasy, Papyrus;
+  background-color: #C7DFC5;
+  color: #373737;
+  margin-left: 20px;
+  padding: 0;
+}
+
+h1 {
+  margin: 10px;
+  color: #2c3e50;
+  font-weight: bold;  
+}
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+p{
+  font-size: 18px;
+}
+
+/*------------------------------ Header ------------------------------*/
+header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #C1DBE3;
+  color: #151C1E;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: Fantasy, Papyrus;
+}
+
+.tab-button.active {
+  background-color: #a6b3bc;
+}
+
+.tab-button:hover {
+  cursor: pointer;
+  color:#132327; 
+}
+
+/* ------------------------------ Home Section ------------------------------ */
+.tab-content {
+  display: none;
+  padding: 20px;
+}
+
+.tab-content:not(.hidden) {
+  display: block;
+}
+
+input,
+select,
+button, option{
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  font-family: Fantasy, Papyrus;
+  border-radius: 10px;
+}
+
+input:hover{
+  cursor: pointer;
+}
+
+select:hover{
+  cursor: pointer;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+#budget-bar-container {
+  background-color: #d8c441;
+  height: 12px;
+  width: 300px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+#budget-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: rgb(183, 95, 12);
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+
+
+
+/* ------------------------------ Expense Form ------------------------------ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+#expense-list {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+#expense-list li {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 6px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ------------------------------ Statistics Section ------------------------------*/
+
+#chart-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+#expense-chart{
+  margin-top: 30px;
+  max-width: 400px;
+  width: 50px;
+  height: 10px;
+}
+
+#chart-type{
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  font-family: Fantasy, Papyrus;
+  border-radius: 10px; 
+}
+
+.chart-box {
+  background-color: white;
+  padding: 30px;
+  margin: 30px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-box canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*------------------------------ Budget Section ------------------------------ */
+#summary-bar-chart {
+  margin-top: 10px;
+  max-width: 500px;
+  width: 100%;
+}
+
+#summary-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+label {
+  font-weight: bold;
+}
+
+#expense-list button i {
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
