@@ -67,7 +67,7 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
-/public/firebase-config.js
+public/firebase-config.js
 # Ignore macOS system files
 .DS_Store
 public/.DS_Store
