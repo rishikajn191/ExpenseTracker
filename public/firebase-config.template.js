@@ -1,4 +1,3 @@
-// firebase-config.template.js
 export const firebaseConfig = {
   apiKey: "${FIREBASE_API_KEY}",
   authDomain: "${FIREBASE_AUTH_DOMAIN}",
@@ -8,6 +7,5 @@ export const firebaseConfig = {
   appId: "${FIREBASE_APP_ID}",
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
