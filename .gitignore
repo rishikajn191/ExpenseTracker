@@ -67,3 +67,10 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+/Users/rishika/Desktop/Expence_Tracker/public/firebase-config.js
+# Ignore macOS system files
+.DS_Store
+public/.DS_Store
+
+# Ignore temp or backup files
+*.save
