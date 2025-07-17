@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Replace Firebase secrets
+      - name: 🔐 Replace Firebase secrets
         run: |
           sed -i 's|\${FIREBASE_API_KEY}|${{ secrets.FIREBASE_API_KEY }}|g' public/firebase-config.template.js
           sed -i 's|\${FIREBASE_AUTH_DOMAIN}|${{ secrets.FIREBASE_AUTH_DOMAIN }}|g' public/firebase-config.template.js
@@ -23,9 +24,10 @@ jobs:
 
           mv public/firebase-config.template.js public/firebase-config.js
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: 🚀 Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_EXPENSETRACKER }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           channelId: live
-          projectId: expensetracker-5bdbb
+          projectId: expensetracker-5bddb
