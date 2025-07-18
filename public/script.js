@@ -134,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
         li.textContent = `${data.description} - ₹${data.amount} [${data.category}]`;
 
         const deleteBtn = document.createElement("button");
-        // deleteBtn.textContent = "❌";
         deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
         deleteBtn.style.marginLeft = "10px";
         deleteBtn.onclick = async () => {
@@ -177,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (mode === "daily") {
           updateDailySummary(allExpenses);
         } else if (mode === "yearly") {
-          updateYearlySummary(allExpenses); // ✅ this line
+          updateYearlySummary(allExpenses);
         }
       });
   });
@@ -330,7 +329,7 @@ function updateMonthlySummary(expenses) {
     li.textContent = `${label}: ₹${monthlyTotals[month].toFixed(2)}`;
     summaryList.appendChild(li);
   }
-  // ✅ Update chart
+  // Update chart
   const labels = Object.keys(monthlyTotals).map(getCurrentMonthLabel);
   const data = Object.values(monthlyTotals);
   renderSummaryChart(labels, data, "Total Monthly Expenses");
@@ -349,7 +348,7 @@ function updateMonthlyBarChart(expenses) {
     monthlySums[month] = (monthlySums[month] || 0) + exp.amount;
   });
 
-  const labels = Object.keys(monthlySums).map(getCurrentMonthLabel); // ✅ this line changed
+  const labels = Object.keys(monthlySums).map(getCurrentMonthLabel);
   const data = Object.values(monthlySums);
 
   if (monthlyChartInstance !== null) {
@@ -396,13 +395,13 @@ function updateDailySummary(expenses) {
   summaryList.innerHTML = "";
 
   for (const date in dailyTotals) {
-    const label = getTodayLabel(date); // ✅ Replace date with “Today” if applicable
+    const label = getTodayLabel(date);
     const li = document.createElement("li");
     li.textContent = `${label}: ₹${dailyTotals[date].toFixed(2)}`;
     summaryList.appendChild(li);
   }
 
-  // ✅ Update daily bar chart
+  // Update daily bar chart
   const labels = Object.keys(dailyTotals).map(getTodayLabel);
   const data = Object.values(dailyTotals);
   renderSummaryChart(labels, data, "Total Daily Expenses");
@@ -426,7 +425,7 @@ function updateYearlySummary(expenses) {
     summaryList.appendChild(li);
   }
 
-  // ✅ Update yearly bar chart
+  // Update yearly bar chart
   const labels = Object.keys(yearlyTotals);
   const data = Object.values(yearlyTotals);
   renderSummaryChart(labels, data, "Total Yearly Expenses");
