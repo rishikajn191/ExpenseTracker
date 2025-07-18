@@ -1,10 +1,10 @@
 const firebaseConfig = {
-  apiKey: "${API_KEY}",
-  authDomain: "${AUTH_DOMAIN}",
-  projectId: "${PROJECT_ID}",
-  storageBucket: "${STORAGE_BUCKET}",
-  messagingSenderId: "${MESSAGING_SENDER_ID}",
-  appId: "${APP_ID}",
+  apiKey: "${FIREBASE_API_KEY}",
+  authDomain: "${FIREBASE_AUTH_DOMAIN}",
+  projectId: "${FIREBASE_PROJECT_ID}",
+  storageBucket: "${FIREBASE_STORAGE_BUCKET}",
+  messagingSenderId: "${FIREBASE_MESSAGING_SENDER_ID}",
+  appId: "${FIREBASE_APP_ID}",
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
