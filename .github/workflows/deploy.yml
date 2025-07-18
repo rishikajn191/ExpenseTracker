@@ -17,8 +17,7 @@ jobs:
         run: sudo apt-get install -y gettext
 
       - name: Generate firebase-config.js from template
-        run: |
-          envsubst < public/firebase-config.template.js > public/firebase-config.js
+        run: envsubst < public/firebase-config.template.js > public/firebase-config.js
         env:
           API_KEY: ${{ secrets.FIREBASE_API_KEY }}
           AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
