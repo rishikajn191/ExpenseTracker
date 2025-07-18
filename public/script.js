@@ -1,10 +1,3 @@
-const firebaseConfig = window.firebaseConfig;
-
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-console.log("Firebase initialized successfully");
-
 // Expense Tracker script
 console.log("Expense Tracker script loaded!");
 
