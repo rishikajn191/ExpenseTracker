@@ -9,7 +9,9 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 
 ## Demo
 Here’s what the Expense Tracker looks like:
-![Dashboard View](public/assets/screenshot-dashboard.png)
+![Home View](public/assets/screenshot-home.png)
+![Statistics Section](public/assets/screenshot-statistics.png)
+![Budgets Section](public/assets/screenshot-budgets.png)
 
 ---
 
