@@ -1,4 +1,11 @@
 # 💸 Expense Tracker with Firebase & Chart.js
+
+[![Firebase](https://img.shields.io/badge/Firebase-Hosting-orange)](https://firebase.google.com/)
+[![CI/CD](https://github.com/rishikajn191/ExpenseTracker/actions/workflows/deploy.yml/badge.svg)](https://github.com/rishikajn191/ExpenseTracker/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/rishikajn191/ExpenseTracker)](https://github.com/rishikajn191/ExpenseTracker/commits/main)
+
+
 A modern web application to track daily, monthly, and yearly expenses with budget visualization and analytics. Built using HTML, CSS, JavaScript, Firebase Firestore, Chart.js, and deployed via GitHub Actions & Firebase Hosting.
 
 ## Live Site:
@@ -68,7 +75,11 @@ ExpenseTracker/
 │   ├── style.css                   # Styling for the app
 │   ├── script.js                   # JS logic for charts, budget, CRUD
 │   ├── firebase-config.js          # Generated from GitHub Secrets (not committed)
-│   └── firebase-config.template.js # Firebase config template with env placeholders
+│   ├── firebase-config.template.js # Firebase config template with env placeholders
+│   └── assets/
+│       ├── screenshot-home.png
+│       ├── screenshot-statistics.png
+│       └── screenshot-budgets.png
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml              # GitHub Actions workflow for Firebase deployment
@@ -123,6 +134,24 @@ This setup ensures secure, scalable, and hands-free deployment with every update
 
 ---
 
+## Future Improvements
+- User authentication (email/password or Google login)
+- Monthly spending summary dashboard
+- Export to CSV or Excel
+- Responsive design enhancements for tablets/mobiles
+- Notifications for overspending
+
+---
+
+## Testing Instructions
+Currently, the app is manually tested. Future enhancements may include:
+- Unit testing for input validation
+- Integration tests for Firestore CRUD operations
+- Visual regression tests for chart rendering
+- GitHub Action workflow to test before deployment
+
+---
+
 ## License
 This project is licensed under the MIT License. <br>
 Feel free to fork, modify, and share! <br>
@@ -134,6 +163,6 @@ See the LICENSE file for more details.
 ***Rishika Jain*** <br>
 Computer Science Engineer <br>
 **Leetcode:** https://leetcode.com/u/rishikajn/ <br>
-**Linkeldin:** https://www.linkedin.com/in/rishikajain191/ <br>
+**LinkeldIn:** https://www.linkedin.com/in/rishikajain191/ <br>
 **Github:** https://github.com/rishikajn191
 **Email:** rishika.jn191@gmail.com
