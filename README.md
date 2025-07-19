@@ -8,6 +8,29 @@
 
 A modern web application to track daily, monthly, and yearly expenses with budget visualization and analytics. Built using HTML, CSS, JavaScript, Firebase Firestore, Chart.js, and deployed via GitHub Actions & Firebase Hosting.
 
+## 📚 Table of Contents
+
+- [Highlights](#-highlights)
+- [Live Site](#live-site)
+- [Repository](#repository)
+- [Demo](#demo)
+- [Features](#features)
+- [Project Setup](#project-setup)
+- [Folder Structure](#folder-structure)
+- [Deployment (CI/CD)](#deployment-cicd)
+- [GitHub Actions: Firebase Hosting CI/CD](#github-actions-firebase-hosting-cicd)
+- [Tech Stack](#tech-stack)
+- [Future Improvements](#future-improvements)
+- [Testing Instructions](#testing-instructions)
+- [License](#license)
+- [Author](#author)
+
+## ✨ Highlights
+- Secure Firebase Config via GitHub Secrets
+- Interactive analytics with Chart.js
+- GitHub Actions CI/CD for automated deployment
+- Real-time Firestore integration
+
 ## Live Site:
 👉 https://expensetracker-5bddb.web.app/
 
@@ -131,6 +154,15 @@ This setup ensures secure, scalable, and hands-free deployment with every update
      - Firebase Hosting
 - Chart.js (for interactive data visualizations)
 - GitHub Actions (for automated CI/CD deployment)
+
+### Technologies Used
+![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?logo=chart.js&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)
+
 
 ---
 
