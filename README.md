@@ -7,6 +7,10 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 ## Repository:
 👉 https://github.com/rishikajn191/ExpenseTracker
 
+## Demo
+Here’s what the Expense Tracker looks like:
+![Dashboard View](public/assets/screenshot-dashboard.png)
+
 ---
 
 ## Features
@@ -21,14 +25,37 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 
 ---
 
-## Tech Stack
-- HTML5, CSS3
-- JavaScript (ES6)
-- Firebase Firestore (Database)
-- Firebase Hosting
-- Chart.js for charts
-- GitHub Actions for deployment automation
-
+## Project Setup
+To run locally:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rishikajn191/ExpenseTracker.git
+   cd ExpenseTracker
+   ```
+2. Install Firebase CLI (if not already):
+   ```bash
+   npm install -g firebase-tools
+   ```
+3. Add your Firebase config:
+- Copy public/firebase-config.template.js → public/firebase-config.js
+- Replace variables with your actual Firebase values
+  ```js
+   const firebaseConfig = {
+     apiKey: "YOUR_API_KEY",
+     authDomain: "YOUR_AUTH_DOMAIN",
+     projectId: "YOUR_PROJECT_ID",
+     storageBucket: "YOUR_STORAGE_BUCKET",
+     messagingSenderId: "YOUR_MSG_ID",
+     appId: "YOUR_APP_ID"
+   };
+   firebase.initializeApp(firebaseConfig);
+   const db = firebase.firestore();
+  ```
+4. Serve locally:
+   ```bash
+   firebase emulators:start
+   ```
+   
 ---
 
 ## Folder Structure
@@ -45,35 +72,59 @@ ExpenseTracker/
 │       └── deploy.yml              # GitHub Actions workflow for Firebase deployment
 ├── .gitignore
 ├── firebase.json                   # Firebase Hosting configuration
-├── README.md
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-## Local Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/rishikajn191/ExpenseTracker.git
-   cd ExpenseTracker
-   ```
-2. Add your Firebase config:
-- Copy public/firebase-config.template.js → public/firebase-config.js
-- Replace variables with your actual Firebase values
-3. Open index.html in your browser, or use Live Server
+## Deployment (CI/CD)
+Deployment is fully automated using GitHub Actions. Here's how it works:
+- Secrets are securely injected using GitHub Actions Secrets  
+- A dynamic firebase-config.js is generated from firebase-config.template.js using envsubst  
+- Any push to the main branch triggers automatic deployment to Firebase Hosting
+### Live URLs
+- Production <br>
+  👉 https://expensetracker-5bddb.web.app/
+- Preview/Test <br>
+  👉 https://expensetracker-5bddb.firebaseapp.com/
 
 ---
 
-## Deployment (CI/CD)
-Deployment is automated using GitHub Actions:
-- Secrets are injected securely
-- firebase-config.js is generated dynamically from firebase-config.template.js using envsubst
-- Changes pushed to main branch trigger deployment to Firebase Hosting
-Main URLs:
-- Production\
-  👉 https://expensetracker-5bddb.web.app/
-- Preview/Test\
-  👉 https://expensetracker-5bddb.firebaseapp.com/
+## GitHub Actions: Firebase Hosting CI/CD
+Make sure to add the following secrets in your GitHub repository settings:
+- FIREBASE_API_KEY  
+- FIREBASE_AUTH_DOMAIN  
+- FIREBASE_PROJECT_ID  
+- FIREBASE_STORAGE_BUCKET  
+- FIREBASE_MESSAGING_SENDER_ID  
+- FIREBASE_APP_ID  
+- FIREBASE_TOKEN (generated via firebase login:ci) <br>
+These secrets are used to dynamically generate your Firebase config file during deployment.
+### Workflow file:  
+.github/workflows/deploy.yml
+### How it works:
+- envsubst replaces variables in firebase-config.template.js to create a secure firebase-config.js file
+- firebase deploy is triggered using GitHub Actions
+- Secrets never touch the repo or version control <br>
+This setup ensures secure, scalable, and hands-free deployment with every update.
+
+---
+
+## Tech Stack
+- HTML5, CSS3, JavaScript (Vanilla ES6)
+- Firebase:
+     - Firestore (Database)
+     - Firebase Hosting
+- Chart.js (for interactive data visualizations)
+- GitHub Actions (for automated CI/CD deployment)
+
+---
+
+## License
+This project is licensed under the MIT License. <br>
+Feel free to fork, modify, and share! <br>
+See the LICENSE file for more details.
 
 ---
 
@@ -82,7 +133,5 @@ Main URLs:
 Computer Science Engineer <br>
 **Leetcode:** https://leetcode.com/u/rishikajn/ <br>
 **Linkeldin:** https://www.linkedin.com/in/rishikajain191/ <br>
+**Github:** https://github.com/rishikajn191
 **Email:** rishika.jn191@gmail.com
-
----
-
