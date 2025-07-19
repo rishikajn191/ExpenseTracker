@@ -1,4 +1,4 @@
-# Expense Tracker with Firebase & Chart.js
+# 💸 Expense Tracker with Firebase & Chart.js
 A modern web application to track daily, monthly, and yearly expenses with budget visualization and analytics. Built using HTML, CSS, JavaScript, Firebase Firestore, Chart.js, and deployed via GitHub Actions & Firebase Hosting.
 
 ## Live Site:
@@ -35,17 +35,16 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 ```text
 ExpenseTracker/
 ├── public/
-│   ├── index.html                 # Main HTML structure
-│   ├── style.css                  # Styling for the app
-│   ├── script.js                  # JS logic for charts, budget, CRUD
-│   ├── firebase-config.js         # Generated from GitHub Secrets (not committed)
-│   ├── firebase-config.template.js # Firebase config template with env placeholders
-│   └── assets/                    # (Optional) Static assets like icons, images
+│   ├── index.html                  # Main HTML structure
+│   ├── style.css                   # Styling for the app
+│   ├── script.js                   # JS logic for charts, budget, CRUD
+│   ├── firebase-config.js          # Generated from GitHub Secrets (not committed)
+│   └── firebase-config.template.js # Firebase config template with env placeholders
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml             # GitHub Actions workflow for Firebase deployment
+│       └── deploy.yml              # GitHub Actions workflow for Firebase deployment
 ├── .gitignore
-├── firebase.json                  # Firebase Hosting configuration
+├── firebase.json                   # Firebase Hosting configuration
 ├── README.md
 ```
 
@@ -79,6 +78,11 @@ Main URLs:
 ---
 
 ## Author
-***Rishika Jain***\
-Computer Science Engineer\
+***Rishika Jain*** <br>
+Computer Science Engineer <br>
+**Leetcode:** https://leetcode.com/u/rishikajn/ <br>
+**Linkeldin:** https://www.linkedin.com/in/rishikajain191/ <br>
 **Email:** rishika.jn191@gmail.com
+
+---
+
