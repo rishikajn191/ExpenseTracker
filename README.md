@@ -8,7 +8,7 @@
 
 A modern web application to track daily, monthly, and yearly expenses with budget visualization and analytics. Built using HTML, CSS, JavaScript, Firebase Firestore, Chart.js, and deployed via GitHub Actions & Firebase Hosting.
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Highlights](#-highlights)
 - [Live Site](#live-site)
@@ -25,7 +25,7 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 - [License](#license)
 - [Author](#author)
 
-## ✨ Highlights
+## Highlights
 - Secure Firebase Config via GitHub Secrets
 - Interactive analytics with Chart.js
 - GitHub Actions CI/CD for automated deployment
