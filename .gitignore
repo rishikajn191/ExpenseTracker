@@ -74,3 +74,4 @@ public/.DS_Store
 
 # Ignore temp or backup files
 *.save
+.DS_Store
