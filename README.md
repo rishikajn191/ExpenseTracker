@@ -160,14 +160,15 @@ Make sure to add the following secrets in your GitHub repository settings:
 - FIREBASE_STORAGE_BUCKET  
 - FIREBASE_MESSAGING_SENDER_ID  
 - FIREBASE_APP_ID  
-- FIREBASE_TOKEN (generated via firebase login:ci) <br>
+- FIREBASE_TOKEN (generated via firebase login:ci)
+<br>
 These secrets are used to dynamically generate your Firebase config file during deployment.
 
 ### Workflow file:  
 _.github/workflows/deploy.yml_
 
 ### How it works:
-- envsubst replaces variables in firebase-config.template.js to create a secure _firebase-config.js_ file
+- envsubst replaces variables in _firebase-config.template.js_ to create a secure _firebase-config.js_ file
 - firebase deploy is triggered using GitHub Actions
 - Secrets never touch the repo or version control <br>
 This setup ensures secure, scalable, and hands-free deployment with every update.
