@@ -45,6 +45,7 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 - Google Sign-In (works on https:// only)
 
 ### Screenshots:
+![Login Page](public/assets/screenshot-login.png)
 ![Home View](public/assets/screenshot-home.png)
 ![Statistics Section](public/assets/screenshot-statistics.png)
 ![Budgets Section](public/assets/screenshot-budgets.png)
