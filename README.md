@@ -4,9 +4,8 @@
 [![CI/CD](https://github.com/rishikajn191/ExpenseTracker/actions/workflows/deploy.yml/badge.svg)](https://github.com/rishikajn191/ExpenseTracker/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/rishikajn191/ExpenseTracker)](https://github.com/rishikajn191/ExpenseTracker/commits/main)
-
-
-A modern web application to track daily, monthly, and yearly expenses with budget visualization and analytics. Built using HTML, CSS, JavaScript, Firebase Firestore, Chart.js, and deployed via GitHub Actions & Firebase Hosting.
+<br>
+A responsive and secure web application to track personal expenses with real-time analytics, smart budgeting, and user-specific dashboards. Built with Vanilla JavaScript, Firebase Authentication & Firestore, Chart.js for visualizations, and deployed via GitHub Actions with CI/CD. Designed to showcase full-stack frontend skills, real-time data handling, and scalable Firebase integration.
 
 ## Table of Contents
 
@@ -33,16 +32,16 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 - Real-time Firestore integration
 
 ## Live Site:
-👉 https://expensetracker-5bddb.web.app/
+👉 _https://expensetracker-5bddb.web.app/_
 
 ## Repository:
-👉 https://github.com/rishikajn191/ExpenseTracker
+👉 _https://github.com/rishikajn191/ExpenseTracker_
 
 ## Demo
-### Demo Login
-- **Email:** demo@user.com <br>
-   **Password:** demo123
-- Google Sign-In (works on https:// only)
+### Demo Account
+To help recruiters and testers, a default demo account is configured:
+- **Email:** _demo@user.com_
+- **Password:** _demo123_
 
 ### Screenshots:
 ![Login Page](public/assets/screenshot-login.png)
@@ -53,30 +52,33 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 ---
 
 ## Features
+- **Firebase Authentication:** Email/Password Login & Google Sign-In
 - Add, delete, and categorize expenses
-- Set and track monthly budget
+- Set and track budget (with alert on over-spending)
 - View dynamic Pie and Bar charts (Chart.js)
-- Toggle summary by daily/monthly/yearly
-- Real-time updates using Firebase Firestore
-- Persistent budget saved in localStorage
-- Deployed using GitHub Actions CI/CD
-- Firebase config injected securely via GitHub Secrets
+- Daily, Monthly, and Yearly Summary Toggle
+- Real-time data sync with Firestore (user-specific data under `users/{uid}/expenses`)
+- Smart Budget Alert Notifications
+- User Avatar/Name display after login
+- Public Demo Login for Recruiters
+- Firebase Hosting with GitHub Actions (CI/CD)
+- Dark Mode toggle for better UX
 
 ---
 
 ## Project Setup
 To run locally:
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/rishikajn191/ExpenseTracker.git
    cd ExpenseTracker
    ```
-2. Install Firebase CLI (if not already):
+2. **Install Firebase CLI (if not already):**
    ```bash
    npm install -g firebase-tools
    ```
-3. Add your Firebase config:
-- Copy public/firebase-config.template.js → public/firebase-config.js
+3. **Add your Firebase config:**
+- Copy _public/firebase-config.template.js_ → _public/firebase-config.js_
   ```bash
   cp public/firebase-config.template.js public/firebase-config.js
    ```
@@ -93,9 +95,18 @@ To run locally:
    firebase.initializeApp(firebaseConfig);
    const db = firebase.firestore();
   ```
-4. Serve locally:
+4. **Serve locally:**
    ```bash
    firebase emulators:start
+   ```
+5. **Enable Firebase Authentication:**
+   - Go to Firebase Console → Authentication → Sign-in method
+   - Enable Email/Password and Google providers
+6. Add `auth.js` for handling login, registration, Google Sign-In, and forgot password.
+7. Serve via Live Server or Firebase (Google login won't work on `file://`)
+   ```bash
+   npm install -g live-server
+   live-server public/
    ```
    
 ---
@@ -107,9 +118,13 @@ ExpenseTracker/
 │   ├── index.html                  # Main HTML structure
 │   ├── style.css                   # Styling for the app
 │   ├── script.js                   # JS logic for charts, budget, CRUD
+│   ├── login.html                  # Separate login page
+│   ├── login.css
+│   ├── auth.js                     # Handles Firebase auth logic
 │   ├── firebase-config.js          # Generated from GitHub Secrets (not committed)
 │   ├── firebase-config.template.js # Firebase config template with env placeholders
 │   └── assets/
+│       ├── screenshot-login.png
 │       ├── screenshot-home.png
 │       ├── screenshot-statistics.png
 │       └── screenshot-budgets.png
@@ -125,16 +140,16 @@ ExpenseTracker/
 ---
 
 ## Deployment (CI/CD)
-Deployment is fully automated using GitHub Actions. Here's how it works:
+Deployment is fully automated using GitHub Actions. <br>
+Here's how it works:
 - Secrets are securely injected using GitHub Actions Secrets  
-- A dynamic firebase-config.js is generated from firebase-config.template.js using envsubst  
+- A dynamic _firebase-config.js_ is generated from _firebase-config.template.js_ using envsubst  
 - Any push to the main branch triggers automatic deployment to Firebase Hosting
 ### Live URLs
-- Production <br>
-  👉 https://expensetracker-5bddb.web.app/
-- Preview/Test <br>
-  👉 https://expensetracker-5bddb.firebaseapp.com/
-
+- **Production** <br>
+  👉 _https://expensetracker-5bddb.web.app/_
+- ** Preview/Test** <br>
+  👉 _https://expensetracker-5bddb.firebaseapp.com/_
 ---
 
 ## GitHub Actions: Firebase Hosting CI/CD
@@ -147,23 +162,34 @@ Make sure to add the following secrets in your GitHub repository settings:
 - FIREBASE_APP_ID  
 - FIREBASE_TOKEN (generated via firebase login:ci) <br>
 These secrets are used to dynamically generate your Firebase config file during deployment.
+
 ### Workflow file:  
-.github/workflows/deploy.yml
+_.github/workflows/deploy.yml_
+
 ### How it works:
-- envsubst replaces variables in firebase-config.template.js to create a secure firebase-config.js file
+- envsubst replaces variables in firebase-config.template.js to create a secure _firebase-config.js_ file
 - firebase deploy is triggered using GitHub Actions
 - Secrets never touch the repo or version control <br>
 This setup ensures secure, scalable, and hands-free deployment with every update.
 
+### Authentication Environment Notes
+- Google Sign-In requires running over _http://localhost_ or _https://domain_
+- Avoid using `file://` protocol for testing locally (use Live Server or Firebase emulators)
+
+
 ---
 
 ## Tech Stack
-- HTML5, CSS3, JavaScript (Vanilla ES6)
-- Firebase:
-     - Firestore (Database)
-     - Firebase Hosting
-- Chart.js (for interactive data visualizations)
-- GitHub Actions (for automated CI/CD deployment)
+- **Frontend:** HTML5, CSS3, JavaScript (ES6)
+- **Charts & Analytics:** Chart.js for dynamic pie/bar/line visualizations
+- **Authentication:** Firebase Authentication (Email/Password + Google Sign-In)
+- **Database:** Firebase Firestore (per-user structured expense storage)
+- **Hosting & Deployment:** Firebase Hosting with GitHub Actions (CI/CD)
+- **DevOps:** Secure Firebase config via GitHub Secrets and CI workflows
+- **UX/UI Enhancements:**
+  - Dark Mode Toggle 🌙
+  - Toast Notifications 🔔
+  - Tabbed Navigation & Responsive Design
 
 ### Technologies Used
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
@@ -177,20 +203,26 @@ This setup ensures secure, scalable, and hands-free deployment with every update
 ---
 
 ## Future Improvements
-- User authentication (email/password or Google login)
-- Monthly spending summary dashboard
-- Export to CSV or Excel
-- Responsive design enhancements for tablets/mobiles
-- Notifications for overspending
+- Export expenses to CSV or Excel
+- User profile management (edit display name, change password)
+- Recurring expense support (e.g., subscriptions)
+- Offline-first capability with local caching
+- Filter expenses by category and date range
+- Enhanced accessibility (keyboard navigation, screen reader support)
+- Smart budget insights (e.g., savings projection)
+- Responsive design improvements for tablets and mobile devices
 
 ---
 
 ## Testing Instructions
-Currently, the app is manually tested. Future enhancements may include:
-- Unit testing for input validation
-- Integration tests for Firestore CRUD operations
-- Visual regression tests for chart rendering
-- GitHub Action workflow to test before deployment
+The application is currently manually tested. Planned enhancements include:
+- Manual UI and cross-browser interaction testing
+- Unit tests for form input validation (e.g., amount, budget fields)
+- Integration tests for Firestore operations (CRUD for expenses)
+- Visual regression tests for charts and dark mode rendering
+- **End-to-end (E2E) flows:** Login → Add Expense → View Analytics → Logout
+- GitHub Actions workflow for automated test runs before deployment
+
 
 ---
 
@@ -202,9 +234,9 @@ See the LICENSE file for more details.
 ---
 
 ## Author
-***Rishika Jain*** <br>
-Computer Science Engineer <br>
-**Leetcode:** https://leetcode.com/u/rishikajn/ <br>
-**LinkeldIn:** https://www.linkedin.com/in/rishikajain191/ <br>
-**Github:** https://github.com/rishikajn191
-**Email:** rishika.jn191@gmail.com
+***Rishika Jain*** (Computer Science Engineer | Full-Stack Web Developer) <br>
+Passionate about building intuitive, data-driven web applications with secure authentication, real-time analytics, and automated CI/CD workflows. <br>
+- **Leetcode:** _https://leetcode.com/u/rishikajn/_ <br>
+- **LinkeldIn:** _https://www.linkedin.com/in/rishikajain191/_ <br>
+- **Github:** _https://github.com/rishikajn191_ <br>
+- **Email:** _rishika.jn191@gmail.com_
