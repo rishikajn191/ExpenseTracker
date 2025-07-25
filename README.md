@@ -70,6 +70,9 @@ To run locally:
    ```
 3. Add your Firebase config:
 - Copy public/firebase-config.template.js → public/firebase-config.js
+  ```bash
+  cp public/firebase-config.template.js public/firebase-config.js
+   ```
 - Replace variables with your actual Firebase values
   ```js
    const firebaseConfig = {
