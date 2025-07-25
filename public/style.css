@@ -57,14 +57,44 @@ nav {
   color:#132327; 
 }
 
-/* ------------------------------ 🌙 Dark Mode Toggle Icon at top-right ------------------------------ */
-/* 🌙 Dark Mode Styles */
-.dark-mode-toggle {
+/* ------------------------------ 🌙 Dark Mode Styles ------------------------------ */
+.user-info {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 24px;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  z-index: 100;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#logout-btn {
+  padding: 5px 12px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
+}
+
+#logout-btn:hover {
+  background-color: #c9302c;
+}
+
+/* 🌙 Dark Mode Toggle Icon Below Logout */
+.dark-mode-toggle {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 2px;
 }
 
 .dark-mode-toggle i {
@@ -72,6 +102,11 @@ nav {
   transition: color 0.3s ease;
 }
 
+body.dark-mode .dark-mode-toggle i {
+  color: #f5f5f5;
+}
+
+/* 🌙 Dark Mode Theme Styles */
 body.dark-mode {
   background-color: #1e1e1e;
   color: #f0f0f0;
@@ -83,7 +118,7 @@ body.dark-mode header {
 }
 
 body.dark-mode h1 {
-  color: #D7D9D7;
+  color: #E3EBFF;
 }
 
 body.dark-mode .tab-button {
@@ -121,11 +156,24 @@ body.dark-mode #expense-list li {
   border-color: #444;
 }
 
-body.dark-mode .dark-mode-toggle i {
-  /* color: #f0f0f0; */
-  color: #f5f5f5;
-
+.user-details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  color: #333;
 }
+
+.user-icon {
+  font-size: 24px;
+  color: #333;
+}
+
+body.dark-mode .user-icon,
+body.dark-mode .user-details {
+  color: #f0f0f0;
+}
+
 
 /* ------------------------------ Home Section ------------------------------ */
 .tab-content {

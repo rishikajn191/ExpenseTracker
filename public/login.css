@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Fantasy, Papyrus;
+  background: #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container {
+  font-family: Fantasy, Papyrus;
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+}
+
+.login-container h1 {
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.input-group input {
+  display: block;
+  width: 91%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.input-group button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: Fantasy, Papyrus;
+}
+
+.input-group button:hover {
+  background-color: #1259a5;
+}
+
+.google-btn {
+  background-color: #db4437;
+}
+.google-btn:hover {
+  background-color: #c1351d;
+}
+
+.extra-links {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.extra-links a {
+  color: #1976d2;
+  text-decoration: none;
+  margin: 0 8px;
+  cursor: pointer;
+}
+.extra-links a:hover {
+  text-decoration: underline;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 300px;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #1259a5;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}

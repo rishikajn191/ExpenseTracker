@@ -1,8 +1,24 @@
 // Expense Tracker script
+
+// Redirect to login.html if UID not present in sessionStorage
+const uid = sessionStorage.getItem("uid");
+if (!uid) {
+  window.location.href = "login.html";
+}
+
+// Handle Firebase auth state
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    const nameSpan = document.getElementById("user-name");
+    nameSpan.textContent = user.displayName || user.email;
+  } else {
+    window.location.href = "login.html";
+  }
+});
+
 console.log("Expense Tracker script loaded!");
 
 let chartInstance = null;
-let monthlyChartInstance = null;
 let BUDGET_LIMIT = 0;
 let summaryChartInstance = null;
 
@@ -72,7 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("userBudget", BUDGET_LIMIT);
     currentBudgetText.textContent = `Current Budget: ₹${BUDGET_LIMIT}`;
 
-    db.collection("expenses")
+    db.collection("users")
+      .doc(uid)
+      .collection("expenses")
       .orderBy("timestamp", "desc")
       .get()
       .then((snapshot) => {
@@ -81,8 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
           allExpenses.push(doc.data());
         });
         checkBudget(allExpenses);
+        const chartCanvas = document.getElementById("expense-chart");
+        if (!chartCanvas.offsetParent) return; // skip rendering if canvas is hidden
+
         updateChart(allExpenses);
-        updateMonthlyBarChart(allExpenses);
       });
   });
 
@@ -94,20 +114,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const category = document.getElementById("category").value;
 
     try {
-      await db.collection("expenses").add({
+      await db.collection("users").doc(uid).collection("expenses").add({
         description: desc,
         amount,
         category,
         timestamp: new Date(),
       });
       form.reset();
+      showToast("✅ Expense added!");
     } catch (error) {
       console.error("Error adding expense: ", error);
     }
   });
 
   // Fetch expenses from Firestore and render them
-  db.collection("expenses")
+  db.collection("users")
+    .doc(uid)
+    .collection("expenses")
     .orderBy("timestamp", "desc")
     .onSnapshot((snapshot) => {
       const list = document.getElementById("expense-list");
@@ -134,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
         li.textContent = `${data.description} - ₹${data.amount} [${data.category}]`;
 
         const deleteBtn = document.createElement("button");
-        // deleteBtn.textContent = "❌";
         deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
         deleteBtn.style.marginLeft = "10px";
         deleteBtn.onclick = async () => {
@@ -147,12 +169,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateChart(allExpenses);
       checkBudget(allExpenses);
-      updateMonthlySummary(allExpenses);
-      updateMonthlyBarChart(allExpenses);
+
+      // Render default view mode chart
+      const mode = document.getElementById("view-mode").value;
+      renderSummaryByMode(mode, allExpenses);
     });
 
   chartTypeSelector.addEventListener("change", () => {
-    db.collection("expenses")
+    db.collection("users")
+      .doc(uid)
+      .collection("expenses")
       .orderBy("timestamp", "desc")
       .get()
       .then((snapshot) => {
@@ -165,20 +191,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // View mode selector for monthly, daily, and yearly summaries
   viewModeSelector.addEventListener("change", (e) => {
     const mode = e.target.value;
-    db.collection("expenses")
+    db.collection("users")
+      .doc(uid)
+      .collection("expenses")
+
       .orderBy("timestamp", "desc")
       .get()
       .then((snapshot) => {
         const allExpenses = [];
         snapshot.forEach((doc) => allExpenses.push(doc.data()));
 
-        if (mode === "monthly") {
-          updateMonthlySummary(allExpenses);
-        } else if (mode === "daily") {
-          updateDailySummary(allExpenses);
-        } else if (mode === "yearly") {
-          updateYearlySummary(allExpenses); // ✅ this line
-        }
+        renderSummaryByMode(mode, allExpenses);
       });
   });
 
@@ -336,53 +359,6 @@ function updateMonthlySummary(expenses) {
   renderSummaryChart(labels, data, "Total Monthly Expenses");
 }
 
-// Update monthly bar chart with expenses data
-function updateMonthlyBarChart(expenses) {
-  const monthlySums = {};
-
-  expenses.forEach((exp) => {
-    const timestamp = exp.timestamp.toDate();
-    const month = timestamp.toLocaleString("default", {
-      month: "long",
-      year: "numeric",
-    });
-    monthlySums[month] = (monthlySums[month] || 0) + exp.amount;
-  });
-
-  const labels = Object.keys(monthlySums).map(getCurrentMonthLabel); // ✅ this line changed
-  const data = Object.values(monthlySums);
-
-  if (monthlyChartInstance !== null) {
-    monthlyChartInstance.destroy();
-  }
-
-  const ctx = document.getElementById("summary-bar-chart").getContext("2d");
-  monthlyChartInstance = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels,
-      datasets: [
-        {
-          label: "Total Monthly Expenses",
-          data,
-          backgroundColor: "#36A2EB",
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
-}
-
 // Update daily summary with expenses data
 function updateDailySummary(expenses) {
   const dailyTotals = {};
@@ -432,6 +408,16 @@ function updateYearlySummary(expenses) {
   renderSummaryChart(labels, data, "Total Yearly Expenses");
 }
 
+function renderSummaryByMode(mode, expenses) {
+  if (mode === "monthly") {
+    updateMonthlySummary(expenses);
+  } else if (mode === "daily") {
+    updateDailySummary(expenses);
+  } else if (mode === "yearly") {
+    updateYearlySummary(expenses);
+  }
+}
+
 // 🔔 Toast Notification
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -444,3 +430,13 @@ function showToast(message) {
     toast.classList.add("hidden");
   }, 10000); // Toast duration: 10 seconds
 }
+
+document.getElementById("logout-btn")?.addEventListener("click", () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    });
+});

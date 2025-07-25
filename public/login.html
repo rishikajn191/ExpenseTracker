@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Expense Tracker</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h1>Welcome Back 👋</h1>
+      <div class="input-group">
+        <input type="email" id="login-email" placeholder="Email" required />
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Password"
+          required
+        />
+        <button onclick="login()">Login</button>
+        <button onclick="googleLogin()" class="google-btn">
+          <i class="fab fa-google"></i> Sign in with Google
+        </button>
+      </div>
+
+      <div class="extra-links">
+        <a href="#" onclick="showSignup()">Sign Up</a> |
+        <a href="#" onclick="showReset()">Forgot Password?</a>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal hidden" id="signup-modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="hideModal('signup-modal')"
+          >&times;</span
+        >
+        <h2>Create Account</h2>
+        <input type="text" id="signup-name" placeholder="Full Name" required />
+        <input
+          type="tel"
+          id="signup-phone"
+          placeholder="Phone Number"
+          required
+        />
+        <input type="email" id="signup-email" placeholder="Email" required />
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Password"
+          required
+        />
+        <input
+          type="password"
+          id="signup-confirm"
+          placeholder="Confirm Password"
+          required
+        />
+        <button onclick="signup()">Sign Up</button>
+      </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div class="modal hidden" id="reset-modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="hideModal('reset-modal')"
+          >&times;</span
+        >
+        <h2>Reset Password</h2>
+        <input
+          type="email"
+          id="reset-email"
+          placeholder="Enter your email"
+          required
+        />
+        <button onclick="resetPassword()">Send Reset Link</button>
+      </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Config generated dynamically -->
+    <!-- <script src="firebase-config.js"></script> -->
+    <script src="firebase-config.js?v=2"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="auth.js"></script>
+  </body>
+</html>
