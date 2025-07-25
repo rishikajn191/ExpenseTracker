@@ -5,7 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/rishikajn191/ExpenseTracker)](https://github.com/rishikajn191/ExpenseTracker/commits/main)
 <br>
-A responsive and secure web application to track personal expenses with real-time analytics, smart budgeting, and user-specific dashboards. Built with Vanilla JavaScript, Firebase Authentication & Firestore, Chart.js for visualizations, and deployed via GitHub Actions with CI/CD. Designed to showcase full-stack frontend skills, real-time data handling, and scalable Firebase integration.
+
+Full-featured personal expense tracking app with Firebase Auth, Firestore, Chart.js analytics, and CI/CD automation.
 
 ## Table of Contents
 
