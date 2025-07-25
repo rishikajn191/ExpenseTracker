@@ -27,6 +27,7 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 
 ## Highlights
 - Secure Firebase Config via GitHub Secrets
+- Firebase Authentication (Email/Password & Google Sign-In)
 - Interactive analytics with Chart.js
 - GitHub Actions CI/CD for automated deployment
 - Real-time Firestore integration
@@ -38,7 +39,12 @@ A modern web application to track daily, monthly, and yearly expenses with budge
 👉 https://github.com/rishikajn191/ExpenseTracker
 
 ## Demo
-Here’s what the Expense Tracker looks like:
+### Demo Login
+- **Email:** demo@user.com <br>
+   **Password:** demo123
+- Google Sign-In (works on https:// only)
+
+### Screenshots:
 ![Home View](public/assets/screenshot-home.png)
 ![Statistics Section](public/assets/screenshot-statistics.png)
 ![Budgets Section](public/assets/screenshot-budgets.png)
